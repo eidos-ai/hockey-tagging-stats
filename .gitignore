@@ -1,0 +1,7 @@
+env
+.env
+config.ini
+*.json
+__pycache__/
+.vscode
+.DS_Store

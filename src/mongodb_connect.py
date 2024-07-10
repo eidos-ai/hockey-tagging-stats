@@ -5,18 +5,19 @@ from configparser import SectionProxy
 from typing import Dict, Any
 
 
-DB_FIELD_BILLED = "cost_per_hour"
-
-
 class MongoDBConnect:
     def __init__(self, config: SectionProxy, mongo_uri: str) -> None:
         self._db_name = config["DB_NAME"]
-        self._timelog_collection_name = config["TIMELOG_COLLECTION_NAME"]
-        self._project_collection_name = config["PROJECT_COLLECTION_NAME"]
+        self._to_tag_collection_name = config["TO_TAG_COLLECTION_NAME"]
+        self._tagged_collection_name = config["TAGGED_COLLECTION_NAME"]
+        self._sub_dataset_collection_name = config["SUB_DATASET_COLLECTION_NAME"]
         self._mongo_uri = mongo_uri
         self._client = self.connect_to_mongodb(self._mongo_uri)
-        self._timelog_collection = self.load_collection(self._timelog_collection_name)
-        self._project_collection = self.load_collection(self._project_collection_name)
+        self._to_tag_collection = self.load_collection(self._to_tag_collection_name)
+        self._tagged_collection = self.load_collection(self._tagged_collection_name)
+        self._sub_dataset_collection = self.load_collection(
+            self._sub_dataset_collection_name
+        )
 
     def __enter__(self) -> MongoDBConnect:
         return self
