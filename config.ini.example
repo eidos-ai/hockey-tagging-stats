@@ -1,12 +1,12 @@
 # Variable name in %(var)s should match variable name in your .env
 [MongoDB]
-MONGO_URI = mongodb://your-mongo-user:%(MONGODB_PASS)@127.0.0.1:27017
+MONGO_URI = mongodb://your-mongo-user:%(MONGODB_PASS)@127.0.0.1:27017/hockey-tags
 DB_NAME = hockey-tags
 SUB_DATASET_COLLECTION_NAME = sub_dataset
 TAGGED_COLLECTION_NAME = tracks_tagged
 TO_TAG_COLLECTION_NAME = tracks_to_tag
 
 [BigQuery]
-dataset = hockey-308717
+dataset = track_tagging
 to_tag_table = tracks_to_tag
 sub_dataset_table = sub_dataset
