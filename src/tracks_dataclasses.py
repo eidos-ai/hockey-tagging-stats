@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from datetime import datetime
 from typing import Any
 
@@ -30,6 +30,9 @@ class TrackToTag:
         self.referee = None
         self.wrong_track = None
 
+    def dict(self):
+        return asdict(self)
+
 
 @dataclass
 class TaggedTrack:
@@ -44,6 +47,9 @@ class TaggedTrack:
         self.referee = params["referee"]
         self.wrong_track = params["wrong_track"]
 
+    def dict(self):
+        return asdict(self)
+
 
 @dataclass
 class SubDataset:
@@ -57,3 +63,6 @@ class SubDataset:
         self.sub_dataset_name = params["sub_dataset_name"]
         self.creation_time = params["creation_time"]
         self.number_of_tracks = len(params["labels"])
+
+    def dict(self):
+        return asdict(self)

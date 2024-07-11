@@ -39,7 +39,7 @@ class MongoDBConnect:
         collection = db[collection_name]
         return collection
 
-    def get_tracks_to_tag(self):
+    def get_tracks_to_tag(self) -> dict[str, TrackToTag]:
         entries = self._to_tag_collection.find()
         tracks = {}
         for entry in entries:
@@ -48,12 +48,12 @@ class MongoDBConnect:
                 tracks[track_id] = TrackToTag(entry)
         return tracks
 
-    def get_tagged_tracks(self):
+    def get_tagged_tracks(self) -> list[TaggedTrack]:
         entries = self._tagged_collection.find()
         tracks = [TaggedTrack(entry) for entry in entries]
         return tracks
 
-    def get_subdatasets(self):
+    def get_subdatasets(self) -> list[SubDataset]:
         entries = self._sub_dataset_collection.find()
         subdatasets = [SubDataset(entry) for entry in entries]
         return subdatasets
